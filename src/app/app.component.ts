@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -8,7 +9,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title = 'app works!';
+  isLogin = true;
 
+
+  constructor(){
+    // let body = document.getElementsByTagName('body')[0]
+    // body.classList.add("hide-sidedrawer");  
+  }
 
   showmenu(){
  

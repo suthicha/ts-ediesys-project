@@ -1,0 +1,33 @@
+<header id="header">
+  <nav id="appbar" class="mui-container-fluid">
+    <table width="100%" cellspacing="0">
+      <tr class="mui--appbar-height">
+        <td>
+          <a (click)="showmenu()" 
+            id="appbar-sidenav-show" 
+            class="mui--hidden-xs mui-hidden-sm"
+            *ngIf="isLogin">
+              <i class="fa fa-bars"></i>
+          </a>
+          <a class="appbar-brand" href="/docs/v1/angular">Electronic Data Interchange via CTI</a>
+        
+        </td>
+        <td class="mui--text-right">
+          <div id="appbar-social-links" class="mui--hidden-xs">
+            <a href="https://github.com/muicss/mui"><i class="fa fa-github-alt"></i></a>
+            <a href="https://twitter.com/mui_css"><i class="fa fa-twitter"></i></a>
+            <a href="/newsletter"><i class="fa fa-envelope-o"></i></a>
+          </div>
+          <div class="mui-dropdown">
+            <a id="appbar-more-vert" data-mui-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+            <ul class="mui-dropdown__menu mui-dropdown__menu--right">
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Feedback</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </nav>
+</header>
