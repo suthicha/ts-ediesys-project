@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components';
-import { NavbarComponent, SidebarComponent, FooterComponent } from './components/menu';
+import { AlertComponent, LoginComponent, OrdersComponent, UploadComponent } from './components';
+import { AlertService, LoginService, UploadService } from './services';
+import { AuthSession, GuardActivate } from './share';
+import { NavbarComponent, SidebarComponent, FooterComponent } from './components/_menu';
+import { routes } from './app.route';
 
 @NgModule({
   declarations: [
@@ -13,14 +15,23 @@ import { NavbarComponent, SidebarComponent, FooterComponent } from './components
     LoginComponent,
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    OrdersComponent,
+    UploadComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routes
   ],
-  providers: [],
+  providers: [
+    GuardActivate, 
+    AuthSession, 
+    AlertService, 
+    LoginService, 
+    UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 <app-navbar [isLogin]="isLogin" (ClickToggle)="showmenu()"></app-navbar>
-<app-sidebar></app-sidebar>
+<app-sidebar [MenuItems]="menuItems" (ClickShowSubmenu)="showSubmenu($event)"></app-sidebar>
 
 <div id="content-wrapper">
   <div id="appbar-placeholder" class="mui--appbar-height"></div>
@@ -7,13 +7,7 @@
     <div class="mui-row">
       <div class="mui-col-sm-10 mui-col-sm-offset-1">
         <div class="space-top"></div>
-
-        <h1>Overview</h1>
-        <p>MUI's Angular library is designed from the ground up to be fast, small and developer-friendly. Using the Angular
-          library you can add MUI components to your Angular modules and switch seamlessly between MUI CSS/JS and MUI Angular
-          even within the same app.</p>
-        <div class="space-bottom"></div>
-        <app-login></app-login>
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

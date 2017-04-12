@@ -1,0 +1,23 @@
+<div id="sidedrawer">
+  <nav id="sidenav" class="mui--no-user-select">
+    <div>
+      <h2 class="mui--appbar-line-height"><a href="/">CTI</a></h2>
+    </div>
+    <div class="mui-divider"></div>
+    <ul name="menuSidedrawer">
+      <li *ngFor="let menu of menuItems; let i = index">
+        <strong (click)="showSubmenu($event)">{{ menu.title}}</strong>
+        <ul [style.display]="(i==0)?'block':'none'">
+          <li *ngFor="let item of menu.items">
+            <i class="fa {{ item.icon}}"></i>
+            <a [routerLink]="[item.routeUrl]">
+            {{ item.title }}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </nav>
+
+</div>

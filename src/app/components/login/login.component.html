@@ -1,18 +1,30 @@
+
+<h1>Overview</h1>
+<p>MUI's Angular library is designed from the ground up to be fast, small and developer-friendly. Using the Angular
+  library you can add MUI components to your Angular modules and switch seamlessly between MUI CSS/JS and MUI Angular
+  even within the same app.</p>
+<div class="space-bottom"></div>
 <div class="mui-container">
   <div class="mui-row">
     <div class="mui-col-md-6">
-      <form class="mui-form">
+      <form 
+      #f="ngForm" 
+      (ngSubmit)="onSubmit(f)"
+      class="mui-form">
         <legend>Username :</legend>
         <div class="mui-textfield mui-textfield--float-label">
-          <input type="text">
+          <input type="text" name="username" ngModel required>
           <label>Email</label>
         </div>
         <legend>Password :</legend>
         <div class="mui-textfield mui-textfield--float-label">
-          <input type="password">
+          <input type="password" name="password" ngModel required>
           <label>Password</label>
         </div>
-        <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+        <button 
+          [disabled]="!f.valid"
+          type="submit" 
+          class="mui-btn mui-btn--raised">Submit</button>
       </form>
     </div>
     
