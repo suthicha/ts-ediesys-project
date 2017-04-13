@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { AlertComponent, LoginComponent, OrdersComponent, UploadComponent } from './components';
-import { AlertService, LoginService, UploadService } from './services';
-import { AuthSession, GuardActivate } from './share';
+import { LoginComponent, OrdersComponent, UploadComponent, RegisterComponent, DialogComponent } from './components';
+import { LoginService, UploadService, RegisterService } from './services';
+import { AuthSession, GuardActivate, ConfigService } from './share';
 import { NavbarComponent, SidebarComponent, FooterComponent } from './components/_menu';
 import { routes } from './app.route';
 
@@ -18,7 +18,8 @@ import { routes } from './app.route';
     FooterComponent,
     OrdersComponent,
     UploadComponent,
-    AlertComponent
+    RegisterComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,11 +28,12 @@ import { routes } from './app.route';
     routes
   ],
   providers: [
+    ConfigService,
     GuardActivate, 
     AuthSession, 
-    AlertService, 
     LoginService, 
-    UploadService],
+    UploadService,
+    RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

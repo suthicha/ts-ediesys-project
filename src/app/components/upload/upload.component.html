@@ -1,42 +1,7 @@
-<!--<h2>Upload files</h2>
-<p>You can copy-paste this boilerplate HTML to get started using MUI:</p>
-<div class="mui-panel f-panel">
-<div class="highlight">
-<form #form class="mui-form">
- <legend>Information</legend>
-  <div class="mui-textfield">
-    <input 
-      #fileInput
-      id="uploadFile1" 
-      type="file" 
-      accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-    
-  </div>
-  <div class="mui-select">
-    <select (change)="cboChange($event)">
-      <option *ngFor="let opt of documentType">
-        {{ opt }}
-      </option>
-     
-    </select>
-    <label>Document Type</label>
-  </div>
-  <div class="mui-textfield">
-    <textarea></textarea>
-    <label>Remarks</label>
-  </div>
-  <button class="mui-btn mui-btn--raised" (click)="addFile()" >Upload</button>
-</form>
-
-</div>
-</div>-->
-
-<div class="jumbotron jumbotron-fluid">
+<div [@flyInOut]="'in'" class="jumbotron jumbotron-fluid">
   <div class="container">
     <h2 class="display-3">Upload your file to system.</h2>
-    <p class="lead">
-      ...
-    </p>
+    <hr>
     <form #form>
       <div class="form-group">
           <label class="control-label">Choose your file</label>
@@ -79,7 +44,7 @@
       <div class="form-group">
         <label for="comment">Remarks</label>
         <textarea #comment class="form-control" rows="3" id="comment"></textarea>
-        <small id="emailHelp" class="form-text text-muted">
+        <small id="remarkHelp" class="form-text text-muted">
           Note an information to us.
         </small>
       </div>

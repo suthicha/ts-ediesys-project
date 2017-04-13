@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, 
+      ViewChild,
+      trigger,
+      state,
+      style,
+      animate,
+      transition } from '@angular/core';
 import { AuthSession } from '../../share';
 
 declare var $:any;
@@ -7,7 +13,25 @@ declare var $:any;
   moduleId: module.id,
   selector: 'app-upload',
   templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.css']
+  styleUrls: ['./upload.component.css'],
+  animations: [
+        trigger('flyInOut', [
+            state('in', style({ opacity: 1, transform: 'translateX(0)' })),
+            transition('void => *', [
+                style({
+                    opacity: 0,
+                    transform: 'translateX(-100%)'
+                }),
+                animate('0.5s ease-in')
+            ]),
+            transition('* => void', [
+                animate('0.2s 10 ease-out', style({
+                    opacity: 0,
+                    transform: 'translateX(100%)'
+                }))
+            ])
+        ])
+    ]
 })
 export class UploadComponent implements OnInit {
 

@@ -1,0 +1,160 @@
+<div [@flyInOut]="'in'" class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h2 class="display-3">Create Account</h2>
+    <hr>
+    <form (ngSubmit)="onSubmit(regForm)" #regForm="ngForm" novalidate>
+      <div class="form-group">
+        <label class="control-label">Company name</label>
+        <input 
+          #companyField="ngModel"
+          [(ngModel)]="companyName"
+          name="companyName"
+          type="text" 
+          class="form-control" 
+          placeholder="Company name" required>
+        <small 
+          *ngIf="companyField.touched && companyField.invalid"
+          class="form-text text-muted errorMessage">
+            <i class="fa fa-exclamation-triangle"></i>
+            Company name is required.
+        </small>
+      </div>
+      <div class="form-group">
+        <label class="control-label">TaxNo.</label>
+        <input 
+          #taxnoField="ngModel"
+          [(ngModel)]="taxno"
+          name="taxno"
+          type="text" 
+          class="form-control" 
+          placeholder="Tax Number" required>
+        <small 
+          *ngIf="taxnoField.touched && taxnoField.invalid"
+          class="form-text text-muted errorMessage">
+            <i class="fa fa-exclamation-triangle"></i>
+            Tax number is required.
+        </small>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Phone</label>
+        <input 
+          #phoneField="ngModel"
+          [(ngModel)]="phone"
+          name="phone"
+          type="text" 
+          class="form-control" 
+          placeholder="Phone">
+      </div>
+      <div class="form-group">
+        <label class="control-label">Fullname (Contact person)</label>
+        <input 
+          #fullnameField="ngModel"
+          [(ngModel)]="fullname"
+          name="fullname"
+          type="text" 
+          class="form-control" 
+          placeholder="Fullname">
+      </div>
+      <div class="form-group">
+        <label class="control-label">Email</label>
+        <input 
+          #emailField="ngModel"
+          [(ngModel)]="email"
+          name="email"
+          type="email" 
+          class="form-control" 
+          placeholder="Email" pattern=".+@.+" required>
+        <small 
+          *ngIf="emailField.touched && emailField.invalid"
+          class="form-text text-muted errorMessage">
+            <i class="fa fa-exclamation-triangle"></i>
+            <span *ngIf="emailField.hasError('required')">
+              Email is required.
+            </span>
+            <span *ngIf="emailField.hasError('pattern') && !emailField.hasError('required')">
+              Email must be email@domain.com 
+            </span>
+        </small>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Username</label>
+        <input
+          #usernameField="ngModel"
+          [(ngModel)]="username"
+          maxlength="35"
+          name="username" 
+          type="text" 
+          class="form-control" 
+          placeholder="Username" required>
+        <small 
+          *ngIf="usernameField.touched && usernameField.invalid"
+          class="form-text text-muted errorMessage">
+            <i class="fa fa-exclamation-triangle"></i>
+            <span>
+              Username is required.
+            </span>
+        </small>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Password</label>
+        <input 
+          #passwordField="ngModel"
+          [(ngModel)]="password"
+          minlength="8"
+          maxlength="25"
+          name="password"
+          type="password" 
+          class="form-control" 
+          placeholder="Password" required>
+        <small 
+          *ngIf="passwordField.touched && passwordField.invalid"
+          class="form-text text-muted errorMessage">
+            <i class="fa fa-exclamation-triangle"></i>
+            <span *ngIf="passwordField.hasError('required')">
+              Password is required.
+            </span>
+            <span *ngIf="passwordField.hasError('minlength') && !passwordField.hasError('required')">
+              Password needs to be at least 8 characters long.
+            </span>
+        </small>
+      </div>
+
+      <button type="submit" class="btn btn-default" [disabled]="regForm.invalid" >
+        <span id="loading" class="glyphicon glyphicon-refresh"></span>
+        Register
+      </button>
+      <div *ngIf="errorResponse" style="padding-top:20px">
+        <i class="fa fa-exclamation-triangle"></i>
+        <small class="form-text text-muted errorMessage">
+          {{ errorResponse }}
+        </small>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="popupMessage" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <h2>Thanks For Submitting Your Info</h2>
+        <hr>
+        <div style="padding-left:25px" id="contentMessage">
+           
+        </div>
+       
+        <div style="padding-top:20px">
+        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" (click)="goLoginPage()">
+          Login page
+        </button>
+        
+        </div>
+       
+      </div>
+ 
+    </div>
+  </div>
+</div>

@@ -1,2 +1,4 @@
-export * from './app.authSession';
-export * from './app.guardActivate';
+export * from './config.service';
+export * from './authSession';
+export * from './guardActivate';
+export * from './interface';

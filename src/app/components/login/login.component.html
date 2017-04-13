@@ -1,33 +1,68 @@
-
-<h1>Overview</h1>
-<p>MUI's Angular library is designed from the ground up to be fast, small and developer-friendly. Using the Angular
-  library you can add MUI components to your Angular modules and switch seamlessly between MUI CSS/JS and MUI Angular
-  even within the same app.</p>
-<div class="space-bottom"></div>
-<div class="mui-container">
-  <div class="mui-row">
-    <div class="mui-col-md-6">
-      <form 
-      #f="ngForm" 
-      (ngSubmit)="onSubmit(f)"
-      class="mui-form">
-        <legend>Username :</legend>
-        <div class="mui-textfield mui-textfield--float-label">
-          <input type="text" name="username" ngModel required>
-          <label>Email</label>
-        </div>
-        <legend>Password :</legend>
-        <div class="mui-textfield mui-textfield--float-label">
-          <input type="password" name="password" ngModel required>
-          <label>Password</label>
-        </div>
-        <button 
-          [disabled]="!f.valid"
-          type="submit" 
-          class="mui-btn mui-btn--raised">Submit</button>
-      </form>
-    </div>
-    
+<div [@flyInOut]="'in'" class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h2 class="display-3">Member Login</h2>
+    <form 
+        #loginForm="ngForm" 
+        (ngSubmit)="onSubmit(loginForm)" novalidate>
+          <div class="form-group">
+            <label class="control-label">Username</label>
+            <input 
+              #usernameField="ngModel"
+              [(ngModel)]="username"
+              maxlength="35"
+              name="username"
+              type="text" 
+              class="form-control" 
+              placeholder="Username" required>
+            <small 
+              *ngIf="usernameField.touched && usernameField.invalid"
+              class="form-text text-muted errorMessage">
+                <i class="fa fa-exclamation-triangle"></i>
+                Username is required.
+            </small>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Password</label>
+            <input 
+              #passwordField="ngModel"
+              [(ngModel)]="password"
+              minlength="8"
+              maxlength="20"
+              name="password"
+              type="password" 
+              class="form-control" 
+              placeholder="Password" required>
+            <small 
+              *ngIf="passwordField.touched && passwordField.invalid"
+              class="form-text text-muted errorMessage">
+                <i class="fa fa-exclamation-triangle"></i>
+                <span *ngIf="passwordField.hasError('required')">
+                  Password is required.
+                </span>
+                <span *ngIf="passwordField.hasError('minlength') && !passwordField.hasError('required')">
+                  Password needs to be at least 8 characters long.
+                </span>
+                
+            </small>
+          </div>
+          <button 
+              [disabled]="!loginForm.valid"
+              type="submit" 
+              class="btn btn-primary">
+              <span id="loading" class="glyphicon glyphicon-refresh"></span>
+              Sign in
+          </button>
+          <button class="btn btn-default" (click)="goRegister($event)">
+            <i class="fa fa-registered"></i>
+            Register
+          </button>
+          <div *ngIf="errorResponse" style="padding-top:20px">
+            <i class="fa fa-exclamation-triangle"></i>
+            <small class="form-text text-muted errorMessage">
+              {{ errorResponse }}
+            </small>
+          </div>
+        </form>
   </div>
 
 </div>
