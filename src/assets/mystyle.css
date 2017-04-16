@@ -483,6 +483,22 @@ p{
     padding-left: 10px;
 }
 
+h2, h3, h4{ 
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+}
+h2 {
+    font-size: 150%;
+}
+h3 {
+    font-size: 125%;
+}
+h4 {
+    font-size: 110%;
+}
+
+
 hr {
    display: block;
    position: relative;
@@ -497,4 +513,12 @@ hr {
    border: none;
    border-top: 1px solid #aaaaaa;
    border-bottom: 1px solid #ffffff;
+}
+
+.control-label {
+    font-size: 90%;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;   
+    -ms-font-smoothing: antialiased;
 }

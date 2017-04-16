@@ -4,13 +4,13 @@
     <hr>
     <form (ngSubmit)="onSubmit(regForm)" #regForm="ngForm" novalidate>
       <div class="form-group">
-        <label class="control-label">Company name</label>
+        <label class="control-label input-md">Company name</label>
         <input 
           #companyField="ngModel"
           [(ngModel)]="companyName"
           name="companyName"
           type="text" 
-          class="form-control" 
+          class="form-control input-sm" 
           placeholder="Company name" required>
         <small 
           *ngIf="companyField.touched && companyField.invalid"
@@ -26,7 +26,7 @@
           [(ngModel)]="taxno"
           name="taxno"
           type="text" 
-          class="form-control" 
+          class="form-control input-sm" 
           placeholder="Tax Number" required>
         <small 
           *ngIf="taxnoField.touched && taxnoField.invalid"
@@ -42,7 +42,7 @@
           [(ngModel)]="phone"
           name="phone"
           type="text" 
-          class="form-control" 
+          class="form-control input-sm" 
           placeholder="Phone">
       </div>
       <div class="form-group">
@@ -52,7 +52,7 @@
           [(ngModel)]="fullname"
           name="fullname"
           type="text" 
-          class="form-control" 
+          class="form-control input-sm" 
           placeholder="Fullname">
       </div>
       <div class="form-group">
@@ -62,7 +62,7 @@
           [(ngModel)]="email"
           name="email"
           type="email" 
-          class="form-control" 
+          class="form-control input-sm" 
           placeholder="Email" pattern=".+@.+" required>
         <small 
           *ngIf="emailField.touched && emailField.invalid"
@@ -84,7 +84,7 @@
           maxlength="35"
           name="username" 
           type="text" 
-          class="form-control" 
+          class="form-control input-sm" 
           placeholder="Username" required>
         <small 
           *ngIf="usernameField.touched && usernameField.invalid"
@@ -104,7 +104,7 @@
           maxlength="25"
           name="password"
           type="password" 
-          class="form-control" 
+          class="form-control input-sm" 
           placeholder="Password" required>
         <small 
           *ngIf="passwordField.touched && passwordField.invalid"
@@ -119,7 +119,7 @@
         </small>
       </div>
 
-      <button type="submit" class="btn btn-default" [disabled]="regForm.invalid" >
+      <button type="submit" class="btn btn-default btn-sm" [disabled]="regForm.invalid" >
         <span id="loading" class="glyphicon glyphicon-refresh"></span>
         Register
       </button>

@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
           ]},
       {title: 'Settings',
         items: [
-          { title:'User information', routeUrl:'upload', icon:'fa-user-o'},
+          { title:'User information', routeUrl:'user', icon:'fa-user-o'},
           { title:'Configuration', routeUrl:'upload', icon:'fa-cog'}
         ]
       }

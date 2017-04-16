@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { LoginComponent, OrdersComponent, UploadComponent, RegisterComponent, DialogComponent } from './components';
-import { LoginService, UploadService, RegisterService } from './services';
+import { flyInOut } from './router.animations';
+import { routes } from './app.route';
 import { AuthSession, GuardActivate, ConfigService } from './share';
 import { NavbarComponent, SidebarComponent, FooterComponent } from './components/_menu';
-import { routes } from './app.route';
+import { LoginService, UploadService, RegisterService, UserService } from './services';
+import { LoginComponent, 
+        OrdersComponent, 
+        UploadComponent, 
+        RegisterComponent, 
+        DialogComponent,
+        UserComponent } from './components';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,8 @@ import { routes } from './app.route';
     OrdersComponent,
     UploadComponent,
     RegisterComponent,
-    DialogComponent
+    DialogComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,8 @@ import { routes } from './app.route';
     AuthSession, 
     LoginService, 
     UploadService,
-    RegisterService],
+    RegisterService,
+    UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

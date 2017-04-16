@@ -1,13 +1,9 @@
-import { Component, OnInit,
-      trigger,
-      state,
-      style,
-      animate,
-      transition } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../services';
 import { DialogComponent } from '../../components';
 import { IUser } from '../../share';
+import { flyInOut } from '../../router.animations';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/Rx';
@@ -19,24 +15,7 @@ declare var $:any;
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  animations: [
-        trigger('flyInOut', [
-            state('in', style({ opacity: 1, transform: 'translateX(0)' })),
-            transition('void => *', [
-                style({
-                    opacity: 0,
-                    transform: 'translateX(-100%)'
-                }),
-                animate('0.5s ease-in')
-            ]),
-            transition('* => void', [
-                animate('0.2s 10 ease-out', style({
-                    opacity: 0,
-                    transform: 'translateX(100%)'
-                }))
-            ])
-        ])
-    ]
+  animations: [ flyInOut() ]
 })
 export class RegisterComponent implements OnInit {
 

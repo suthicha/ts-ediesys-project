@@ -1,12 +1,9 @@
-import { Component, OnInit, 
-      trigger,
-      state,
-      style,
-      animate,
-      transition } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services';
 import { AuthSession } from '../../share';
+import { flyInOut } from '../../router.animations';
+import { Subject } from 'rxjs/Subject';
 
 declare var $:any;
 
@@ -14,27 +11,11 @@ declare var $:any;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  animations: [
-        trigger('flyInOut', [
-            state('in', style({ opacity: 1, transform: 'translateX(0)' })),
-            transition('void => *', [
-                style({
-                    opacity: 0,
-                    transform: 'translateX(-100%)'
-                }),
-                animate('0.5s ease-in')
-            ]),
-            transition('* => void', [
-                animate('0.2s 10 ease-out', style({
-                    opacity: 0,
-                    transform: 'translateX(100%)'
-                }))
-            ])
-        ])
-    ]
+  animations: [ flyInOut()]
 })
 export class LoginComponent implements OnInit {
 
+  subjectHandler = new Subject();
   returnUrl: string = '';
   errorResponse: string = '';
 
@@ -45,6 +26,14 @@ export class LoginComponent implements OnInit {
     private _route: ActivatedRoute) { }
 
   ngOnInit() {
+    
+    this.subjectHandler.subscribe((nextValue)=>{
+      $('#loading').removeClass('spinning');
+    });
+
+    $('.form-control').addClass('input-sm');
+    $('.btn').addClass('btn-sm');
+
     this._authSession.setSession = undefined;
     this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';  
   }
@@ -58,7 +47,8 @@ export class LoginComponent implements OnInit {
         this._loginService.identify(f.value.username, f.value.password)
             .subscribe(resp => {
                 this._authSession.setSession = resp;
-                console.log(this._authSession.getSession);
+                this.subjectHandler.next(resp);
+                
                 if (this.returnUrl == '/')
                 {
                 this._router.navigateByUrl('/orders');
@@ -69,7 +59,7 @@ export class LoginComponent implements OnInit {
                 this.errorResponse = 'The username or password is incorrect.';
             }
         ) //end indentify
-        $('#loading').removeClass('spinning');
+        
     }, 2000)
 
     

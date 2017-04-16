@@ -1,33 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { ConfigService, IUser } from '../share';
+import { ConfigService, IAuth, IUser } from '../share';
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch'
 
 @Injectable()
-export class RegisterService {
+export class UserService {
 
   _baseUrl: string = '';
 
   constructor(
-    private _http: Http,
-    private _configService: ConfigService) { 
-      this._baseUrl = _configService.getApiURI();
-    }
+      private _http: Http, 
+      private _configService: ConfigService) { 
+        this._baseUrl = _configService.getApiURI();
+      }
 
-   createUser(user: any){
-
-      let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
+  
+  putUser(user: IUser): Observable<IAuth>{
+      
+      let headers = new Headers({ 'Content-Type': 'application/json; charset=UTF-8' });
+   
       let options = new RequestOptions({ headers: headers });
       let body = JSON.stringify(user);
-
-      return this._http.post(this._baseUrl + 'user', body, options)
+      
+      return this._http.put(this._baseUrl + 'user', body, options)
         .map((res: Response) => res.json())
         .catch(this.handleError);
-    } 
+  }
 
-    private handleError(error: any) {
+  
+  private handleError(error: any) {
+      
       var applicationError = error.headers.get('Application-Error');
       var serverError = error.json();
       var modelStateErrors: string = '';
@@ -44,5 +48,4 @@ export class RegisterService {
 
       return Observable.throw(applicationError || modelStateErrors || 'Server error');
     }
-
 }
