@@ -14,7 +14,7 @@ export const router: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'orders', component: OrdersComponent},
     { path: 'upload', component: UploadComponent, canActivate: [ GuardActivate ]},
-    { path: 'user', component: UserComponent },
+    { path: 'user', component: UserComponent, canActivate: [ GuardActivate ] },
     { path: '**', redirectTo: ''}
 ]
 

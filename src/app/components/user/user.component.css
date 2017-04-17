@@ -13,6 +13,13 @@
     text-align: center;
 }
 
+.tab-pane {
+    padding: 0 10px;
+}
+
+.nav-tabs > li > a {
+    line-height: 0.8;
+}
 @media only screen and (max-width: 1023px){
     .jumbotron {
         width: 90%;

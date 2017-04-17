@@ -6,7 +6,11 @@ export interface IAuth {
     phone: string,
     companyName: string,
     taxno: string,
-    secretkey: string
+    secretkey: string;
+    isExportInvoice: boolean;
+    isImportInvoice: boolean;
+    isBOI: boolean;
+    isOther: boolean;
 }
 
 export interface IUser {
@@ -19,4 +23,9 @@ export interface IUser {
     taxno: string;
     phone: string;
     secretkey: string;
+    updateBy: string;
+    isExportInvoice: boolean;
+    isImportInvoice: boolean;
+    isBOI: boolean;
+    isOther: boolean;
 }

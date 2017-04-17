@@ -1,5 +1,9 @@
 import { IUser } from '../share';
 export class User implements IUser {
+    isExportInvoice: boolean;
+    isImportInvoice: boolean;
+    isBOI: boolean;
+    isOther: boolean;
     id: number;
     username: string;
     password: string;
@@ -9,4 +13,5 @@ export class User implements IUser {
     taxno: string;
     phone: string;
     secretkey: string;
+    updateBy: string;
 }

@@ -37,12 +37,7 @@ export class UploadComponent implements OnInit {
     $('.input-group').addClass('input-group-sm');
 
     this.documentSelected = '';
-    this.documentType = [
-      '',
-      'Export Commercial invoice',
-      'Import Commercial invoice',
-      'BOI',
-      'Other'];
+    this.documentType = [];
 
     let auth = this._authSession.getSession;
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams, Response } from '@angular/http';
-import { ConfigService } from '../share';
-import { IAuth } from '../share';
+import { AuthSession, ConfigService } from '../share';
+import { IAuth, handleError } from '../share';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch'
@@ -15,6 +15,7 @@ export class LoginService {
 
   constructor(
       private _http: Http,
+      private _authSession: AuthSession,
       private _configService: ConfigService) { 
       this._baseUrl = _configService.getApiURI();
   }
@@ -29,26 +30,18 @@ export class LoginService {
         .map((res: Response) => {
               return res.json();
         })
-        .catch(this.handleError);
+        .catch(handleError);
   }
 
-  private handleError(error: any) {
-        var applicationError = error.headers.get('Application-Error');
-        var serverError = error.json();
-        var modelStateErrors: string = '';
+  isLogged(){
 
-        if (!serverError.type) {
-            console.log(serverError);
-            for (var key in serverError) {
-                if (serverError[key])
-                    modelStateErrors += serverError[key] + '\n';
-            }
-        }
-
-        modelStateErrors = modelStateErrors = '' ? null : modelStateErrors;
-
-        return Observable.throw(applicationError || modelStateErrors || 'Server error');
-    }
-
-
+      let searchParams = new URLSearchParams();
+      searchParams.append('secretkey', this._authSession.loggedSecretKey);
+      
+      return this._http.get(this._baseUrl + 'login', {search: searchParams})
+        .map((res: Response) => {
+            return res.json();
+        })
+        .catch(handleError);
+  }
 }

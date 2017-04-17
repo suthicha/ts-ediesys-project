@@ -46,6 +46,7 @@ export class UserComponent implements OnInit {
       obj.id = this.authState.id;
       obj.username = this.authState.username;
       obj.secretkey = this.authState.secretkey;
+      obj.updateBy = this.authState.username;
       
       this._userService.putUser(obj)
         .subscribe((res)=>{
@@ -67,9 +68,25 @@ export class UserComponent implements OnInit {
     setTimeout(()=>{
 
 
-      this.subjectHandler.next('2,Your password reset.');
+      this._userService.putResetPassword(
+          this.authState.id, 
+          f.value.username, 
+          f.value.password, 
+          this.authState.secretkey)
+          .subscribe((res)=>{
+            this._authSession.setSession = res;
+            this.authState = this._authSession.getSession;
+            this.subjectHandler.next('2,Reset password success.');
+          },
+          err => {
+            console.log(err);
+          })
     },2000);
 
+  }
+
+  saveOption(f){
+    console.log(f.value);
   }
 
   private fillUserSession(){
@@ -84,7 +101,12 @@ export class UserComponent implements OnInit {
         companyName: obj.companyName,
         taxno: obj.taxno,
         phone: obj.phone,
-        secretkey: obj.secretkey
+        secretkey: obj.secretkey,
+        updateBy: obj.username,
+        isExportInvoice: obj.isExportInvoice,
+        isImportInvoice: obj.isImportInvoice,
+        isBOI: obj.isBOI,
+        isOther: obj.isOther
       }
   }
 

@@ -1,134 +1,196 @@
 <div [@flyInOut]="'in'" class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h2 class="display-3">User information</h2>
-        <hr>
-        <form (ngSubmit)="updateProfile(userForm)" #userForm="ngForm" novalidate>
-            <div class="form-group">
-                <label for="conpanyName" class="control-label">
-                    Company Name
-                </label>
-                <input 
-                    #companyNameField = "ngModel"
-                    [(ngModel)] = "user.companyName"
-                    name="companyName" 
-                    type="text" 
-                    class="form-control input-sm" required>
-                <small 
-                    *ngIf="companyNameField.touched && companyNameField.invalid"
-                    class="form-text text-muted errorMessage">
-                    <i class="fa fa-exclamation-triangle"></i>
-                    Company name is required.
-                </small>
-            </div>
-            <div class="form-group">
-                <label for="taxno" class="control-label">
-                    Tax Number
-                </label>
-                <input 
-                    #taxnoField = "ngModel"
-                    [(ngModel)] = "user.taxno"
-                    name="taxno" 
-                    type="text" 
-                    class="form-control input-sm" required>
-                <small
-                    *ngIf="taxnoField.touched && taxnoField.invalid"
-                    class="form-text text-muted errorMessage">
-                    <i class="fa fa-exclamation-triangle"></i>
-                    Tax Number is required.
-                </small>
-            </div>
-            <div class="form-group">
-                <label for="fullname" class="control-label">
-                    Fullname
-                </label>
-                <input 
-                    #fullnameField = "ngModel"
-                    [(ngModel)] = "user.fullname"
-                    name="fullname" 
-                    type="text" 
-                    class="form-control input-sm">
-            </div>
-            <div class="form-group">
-                <label for="phone" class="control-label">
-                    Phone
-                </label>
-                <input 
-                    #phoneField = "ngModel"
-                    [(ngModel)] = "user.phone"
-                    name="phone" 
-                    type="text" 
-                    class="form-control input-sm">
-            </div>
-            <div class="form-group">
-                <label for="email" class="control-label">
-                    Email
-                </label>
-                <input 
-                    #emailField = "ngModel"
-                    [(ngModel)] = "user.email"
-                    name="email" 
-                    type="email" 
-                    class="form-control input-sm" pattern=".+@.+" required>
-                <small
-                    *ngIf="emailField.touched && emailField.invalid"
-                    class="form-text text-muted errorMessage">
-                    <i class="fa fa-exclamation-triangle"></i>
-                    <span *ngIf="emailField.hasError('required')">
-                        Email is required.
-                    </span>
-                    <span *ngIf="emailField.hasError('pattern') && !emailField.hasError('required')">
-                        Email must be email@domain.com 
-                    </span>
-                </small>
-            </div>
+         <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab1">User information</a></li>
+            <li><a data-toggle="tab" href="#tab2">Account Security</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane fade in active">
+            <h3 class="display-3">User information</h3>
+            <hr>
+            <form (ngSubmit)="updateProfile(userForm)" #userForm="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="conpanyName" class="control-label">
+                            Company Name
+                        </label>
+                        <input 
+                            #companyNameField = "ngModel"
+                            [(ngModel)] = "user.companyName"
+                            name="companyName" 
+                            type="text" 
+                            class="form-control input-sm" required>
+                        <small 
+                            *ngIf="companyNameField.touched && companyNameField.invalid"
+                            class="form-text text-muted errorMessage">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            Company name is required.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="taxno" class="control-label">
+                            Tax Number
+                        </label>
+                        <input 
+                            #taxnoField = "ngModel"
+                            [(ngModel)] = "user.taxno"
+                            name="taxno" 
+                            type="text" 
+                            class="form-control input-sm" required>
+                        <small
+                            *ngIf="taxnoField.touched && taxnoField.invalid"
+                            class="form-text text-muted errorMessage">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            Tax Number is required.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullname" class="control-label">
+                            Fullname
+                        </label>
+                        <input 
+                            #fullnameField = "ngModel"
+                            [(ngModel)] = "user.fullname"
+                            name="fullname" 
+                            type="text" 
+                            class="form-control input-sm">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="control-label">
+                            Phone
+                        </label>
+                        <input 
+                            #phoneField = "ngModel"
+                            [(ngModel)] = "user.phone"
+                            name="phone" 
+                            type="text" 
+                            class="form-control input-sm">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label">
+                            Email
+                        </label>
+                        <input 
+                            #emailField = "ngModel"
+                            [(ngModel)] = "user.email"
+                            name="email" 
+                            type="email" 
+                            class="form-control input-sm" pattern=".+@.+" required>
+                        <small
+                            *ngIf="emailField.touched && emailField.invalid"
+                            class="form-text text-muted errorMessage">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <span *ngIf="emailField.hasError('required')">
+                                Email is required.
+                            </span>
+                            <span *ngIf="emailField.hasError('pattern') && !emailField.hasError('required')">
+                                Email must be email@domain.com 
+                            </span>
+                        </small>
+                    </div>
+                    
+                    <h3>Upload options</h3>
+                    <hr>
+                    <div class="checkbox checkbox-info checkbox-circle">
+                        <input 
+                            #exportCommercialInvoiceField = "ngModel"
+                            [(ngModel)]="user.isExportInvoice"
+                            name="isExportInvoice"
+                            id="checkbox1" 
+                            class="styled" 
+                            type="checkbox">
+                        <label for="checkbox1" class="control-label">
+                            Export Commercial invoice
+                        </label>
+                    </div>
+                    <div class="checkbox checkbox-info checkbox-circle">
+                        <input 
+                            #importCommercialInvoiceField = "ngModel"
+                            [(ngModel)]="user.isImportInvoice"
+                            name="isImportInvoice"
+                            id="checkbox2" 
+                            class="styled" 
+                            type="checkbox">
+                        <label for="checkbox2" class="control-label">
+                            Import Commercial invoice
+                        </label>
+                    </div>
+                    <div class="checkbox checkbox-info checkbox-circle">
+                        <input 
+                            #boiField = "ngModel"
+                            [(ngModel)] = "user.isBOI"
+                            name="isBOI"
+                            id="checkbox3" 
+                            class="styled" 
+                            type="checkbox">
+                        <label for="checkbox3" class="control-label">
+                            BOI
+                        </label>
+                    </div>
+                    <div class="checkbox checkbox-info checkbox-circle">
+                        <input 
+                            #otherField = "ngModel"
+                            [(ngModel)] = "user.isOther"
+                            name = "isOther"
+                            id="checkbox4" 
+                            class="styled" 
+                            type="checkbox">
+                        <label for="checkbox4" class="control-label">
+                            Other
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="userForm.invalid">
+                        <span id="loading1" class="glyphicon glyphicon-refresh"></span>
+                        Update
+                    </button>
+                </form>
             
-            <button type="submit" class="btn btn-primary btn-sm" [disabled]="userForm.invalid">
-                <span id="loading1" class="glyphicon glyphicon-refresh"></span>
-                Update
-            </button>
-        </form>
-        <h3>Account security</h3>
-        <hr>
-        <form (ngSubmit)="resetPassword(accForm)" #accForm="ngForm" novalidate>
-        <div class="form-group">
-                <label for="username" class="control-label">
-                    Username
-                </label>
-                <input
-                    [(ngModel)]="user.username"
-                    name="username" 
-                    type="text" 
-                    class="form-control input-sm" readonly>
             </div>
-            <div class="form-group">
-                <label for="password" class="control-label">
-                    Password
-                </label>
-                <input 
-                    #passwordField = "ngModel"
-                    [(ngModel)] = "user.password"
-                    name="password" 
-                    type="password" 
-                    minlength="8"
-                    maxlength="25"
-                    class="form-control input-sm" required>
-                <small 
-                    *ngIf="passwordField.touched && passwordField.invalid"
-                    class="form-text text-muted errorMessage">
-                    <i class="fa fa-exclamation-triangle"></i>
-                    <span *ngIf="passwordField.hasError('required')">
-                        Password is required.
-                    </span>
-                    <span *ngIf="passwordField.hasError('minlength') && !passwordField.hasError('required')">
-                        Password needs to be at least 8 characters long.
-                    </span>
-                </small>
+            <div id="tab2" class="tab-pane fade">
+                <h3>Document Type</h3>
+                <hr>
+                <form (ngSubmit)="resetPassword(accForm)" #accForm="ngForm" novalidate>
+                <div class="form-group">
+                        <label for="username" class="control-label">
+                            Username
+                        </label>
+                        <input
+                            [(ngModel)]="user.username"
+                            name="username" 
+                            type="text" 
+                            class="form-control input-sm" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">
+                            Password
+                        </label>
+                        <input 
+                            #passwordField = "ngModel"
+                            [(ngModel)] = "user.password"
+                            name="password" 
+                            type="password" 
+                            minlength="8"
+                            maxlength="25"
+                            class="form-control input-sm" required>
+                        <small 
+                            *ngIf="passwordField.touched && passwordField.invalid"
+                            class="form-text text-muted errorMessage">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <span *ngIf="passwordField.hasError('required')">
+                                Password is required.
+                            </span>
+                            <span *ngIf="passwordField.hasError('minlength') && !passwordField.hasError('required')">
+                                Password needs to be at least 8 characters long.
+                            </span>
+                        </small>
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-sm" [disabled]="accForm.invalid">
+                        <span id="loading2" class="glyphicon glyphicon-refresh"></span>
+                        Reset password
+                    </button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-warning btn-sm" [disabled]="accForm.invalid">
-                <span id="loading2" class="glyphicon glyphicon-refresh"></span>
-                Reset password
-            </button>
-        </form>
+        </div>
+
     </div>
 </div>
 
