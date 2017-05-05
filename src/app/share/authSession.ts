@@ -14,8 +14,9 @@ export class AuthSession{
         }
     }
 
-
     get getSession(){
+        if (localStorage.getItem('auth') == 'undefined')
+            return null;
         return JSON.parse(localStorage.getItem('auth')) || undefined;
     }
 
@@ -24,6 +25,8 @@ export class AuthSession{
     }
 
     get loggedSecretKey(){
+        if (this.getSession == null)
+            return "";
         return this.getSession.secretkey;
     }
 }

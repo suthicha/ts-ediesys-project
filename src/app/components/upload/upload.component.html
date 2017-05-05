@@ -34,16 +34,16 @@
       <div class="form-group">
         <label class="control-label">Document type</label>
         <div>
-            <select class="form-control input-sm" (change)="cboChange($event)">
-              <option *ngFor="let opt of documentType">
-                {{ opt }}
+            <select class="form-control input-sm" #opt (change)="cboChange(opt.value)">
+              <option *ngFor="let opt of documentType" [value]="opt.name">
+                {{ opt.description }}
               </option>
             </select>
         </div>
       </div>
       <div class="form-group">
         <label for="comment" class="control-label">Remarks</label>
-        <textarea #comment class="form-control input-sm" rows="3" id="comment"></textarea>
+        <textarea #commentField class="form-control input-sm" rows="3" id="comment" name="comment" [(ngModel)]="comment" ></textarea>
         <small id="remarkHelp" class="form-text text-muted">
           Note an information to us.
         </small>
@@ -63,7 +63,8 @@
     <div class="modal-content">
 
       <div class="modal-body">
-        <h2>Warning...</h2>
+        <h2>{{ errorTitle }}</h2>
+        <hr>
         <div style="padding-left:25px">
            <span style="white-space:pre-wrap;">{{ errorText }}</span>
         </div>

@@ -34,14 +34,13 @@ export class LoginService {
   }
 
   isLogged(){
-
-      let searchParams = new URLSearchParams();
-      searchParams.append('secretkey', this._authSession.loggedSecretKey);
-      
-      return this._http.get(this._baseUrl + 'login', {search: searchParams})
-        .map((res: Response) => {
-            return res.json();
-        })
-        .catch(handleError);
+    let searchParams = new URLSearchParams();
+    searchParams.append('secretkey', this._authSession.loggedSecretKey);
+    
+    return this._http.get(this._baseUrl + 'login', {search: searchParams})
+    .map((res: Response) => {
+        return res.json();
+    })
+    .catch(handleError);
   }
 }

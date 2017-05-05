@@ -29,3 +29,8 @@ export interface IUser {
     isBOI: boolean;
     isOther: boolean;
 }
+
+export interface IDocumentType {
+    name: string;
+    description: string;
+}
