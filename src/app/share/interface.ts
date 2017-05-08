@@ -29,6 +29,18 @@ export interface IUser {
     isBOI: boolean;
     isOther: boolean;
 }
+export interface IMessageOrder {
+    messageId: number,
+    taxno: string,
+    fileName: string,
+    baseFileName: string,
+    contentType: string,
+    size: number,
+    status: number,
+    createDate: Date,
+    doctype: string,
+    remark: string
+}
 
 export interface IDocumentType {
     name: string;

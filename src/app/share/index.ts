@@ -3,3 +3,4 @@ export * from './authSession';
 export * from './guardActivate';
 export * from './interface';
 export * from './handleError';
+export * from './filtered.pipe';

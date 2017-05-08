@@ -19,13 +19,12 @@ export class AppComponent implements OnInit {
     this.menuItems = [
       {title: 'Dashboard',
         items:[
-            { title:'Order overview', routeUrl:'orders', icon:'fa-file-text-o'},
+            { title:'Order Status', routeUrl:'orders', icon:'fa-file-text-o'},
             { title:'Upload', routeUrl:'upload', icon:'fa-file-text-o'}
           ]},
       {title: 'Settings',
         items: [
-          { title:'User information', routeUrl:'user', icon:'fa-user-o'},
-          { title:'Configuration', routeUrl:'upload', icon:'fa-cog'}
+          { title:'User information', routeUrl:'user', icon:'fa-user-o'}
         ]
       }
     ]
