@@ -25,7 +25,7 @@ export class AuthSession{
     }
 
     get loggedSecretKey(){
-        console.log(this.getSession.secretkey);
+        
         if (this.getSession == null)
             return "";
         return this.getSession.secretkey;

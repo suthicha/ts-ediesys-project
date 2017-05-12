@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthSession } from './share';
 import { Menu } from './models';
 
 @Component({
@@ -9,12 +10,17 @@ import { Menu } from './models';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  isLogin = true;
+  isLogin = false;
   menuItems = Array<Menu>();
+  bodyElement: any;
 
-  constructor(private _router: Router){
-    let body = document.getElementsByTagName('body')[0]
-    // body.classList.add("hide-sidedrawer");  
+  constructor(
+    private _router: Router, 
+    private _authSession: AuthSession){
+    
+  
+    this.bodyElement = document.getElementsByTagName('body')[0]
+    this.bodyElement.classList.add("hide-sidedrawer");  
 
     this.menuItems = [
       {title: 'Dashboard',
@@ -28,18 +34,24 @@ export class AppComponent implements OnInit {
         ]
       }
     ]
-
   }
 
   ngOnInit(){
+
     this._router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // console.log(event);
-        
+          if(this._authSession.loggedSecretKey){
+            this.bodyElement.classList.remove("hide-sidedrawer"); 
+            this.isLogin = true;
+          }else{
+            this.bodyElement.classList.add("hide-sidedrawer"); 
+            this.isLogin = false;
+          }
       }
     })
   }
 
+ 
   showmenu(){
  
     let body = document.getElementsByTagName('body')[0]

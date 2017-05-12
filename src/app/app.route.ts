@@ -9,13 +9,13 @@ import { LoginComponent,
 
 
 export const router: Routes = [
-    { path: '', redirectTo: 'orders', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
-    { path: 'orders', component: OrdersComponent},
+    { path: 'orders', component: OrdersComponent, canActivate: [ GuardActivate ]},
     { path: 'upload', component: UploadComponent, canActivate: [ GuardActivate ]},
     { path: 'user', component: UserComponent, canActivate: [ GuardActivate ] },
-    { path: '**', redirectTo: ''}
+    { path: '', component: OrdersComponent, canActivate: [GuardActivate] },
+    { path: '**', component: OrdersComponent, canActivate: [GuardActivate] }
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

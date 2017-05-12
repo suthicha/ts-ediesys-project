@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit {
 
     setTimeout(()=>{
         this._loginService.identify(f.value.username, f.value.password)
-            .subscribe(resp => {
+            .subscribe(
+              resp => {
                 this._authSession.setSession = resp;
                 this.subjectHandler.next(resp);
                 
@@ -54,10 +55,11 @@ export class LoginComponent implements OnInit {
                 this._router.navigateByUrl('/orders');
                 }
                 this._router.navigateByUrl(this.returnUrl);
-            },
-            error => {
+              },
+              error => {
                 this.errorResponse = 'The username or password is incorrect.';
-            }
+              },
+              ()=> { console.log('complete')}
         ) //end indentify
         
     }, 2000)

@@ -29,8 +29,9 @@
             <td style="text-align:center">{{ transStatusText(order.status)}}</td>
             <td>
               <button class="btn btn-success btn-sm pull-right" *ngIf="order.status >= 2">Received</button>
-              <button class="btn btn-danger btn-sm pull-right" *ngIf="order.status == 0">Delete</button>
-            
+              <button 
+                class="btn btn-danger btn-sm pull-right" 
+                *ngIf="order.status == 0" (click)="deleteOrder(order)">Delete</button>
             </td>
           </tr>
         </tbody>

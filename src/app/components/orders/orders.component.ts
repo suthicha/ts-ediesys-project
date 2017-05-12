@@ -37,7 +37,6 @@ export class OrdersComponent implements OnInit {
       .valueChanges
       .debounceTime(200)
       .subscribe(term => {
-        console.log(term);
         this.filterText = term;
       });
   }
@@ -55,9 +54,12 @@ export class OrdersComponent implements OnInit {
 
     this.loadmessage$.subscribe(
       orders => this.orders = orders,
-      () => console.log("error"),
-      () => console.log("complete")
+      err => console.log(err)
     )
+  }
+
+  deleteOrder(order: any){
+    console.log(order);
   }
 
   showDialog(){

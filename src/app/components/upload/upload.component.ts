@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { flyInOut } from '../../router.animations';
 import { Subject } from 'rxjs/Subject';
 import { DocumentType } from '../../models';
